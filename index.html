@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./fontawesome-free-5.15.3-web/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+  <title>Document</title>
+  <style>
+    body,
+    html {
+      margin: 0;
+      background-color: rgb(245, 245, 245);
+      width: 100%;
+      height: 100%;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    #header {
+
+      box-sizing: border-box;
+      width: 100%;
+      height: 56px;
+      position: fixed;
+      top: 0;
+      background: #FFF;
+      z-index: 1;
+    }
+
+    .header_left {
+      position: absolute;
+      top: 8px;
+      left: 16px;
+      width: 185px;
+      height: 40px;
+      font-size: 20px;
+      background-color: white;
+    }
+
+    .left_img {
+      display: inline-block;
+      width: 145px;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+
+    .header_center {
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40%;
+      height: 40px;
+      font-size: 0;
+    }
+
+    .header_right {
+      position: absolute;
+      top: 8px;
+      right: 16px;
+      width: 225px;
+      height: 40px;
+      padding-right: 10px;
+      text-align: right;
+    }
+
+    #header .headericon {
+      display: inline-block;
+      width: 35px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    #left {
+
+      box-sizing: border-box;
+      position: fixed;
+      top: 56px;
+      width: 18%;
+      height: 100%;
+      background: white;
+      color: black;
+      overflow-y: auto;
+      z-index: 1;
+    }
+
+    #left::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    #left::-webkit-scrollbar-track {
+      background: white;
+    }
+
+    #left::-webkit-scrollbar-thumb {
+      background: white;
+      border-radius: 10px 10px;
+    }
+
+    #left:hover::-webkit-scrollbar-thumb {
+      background: #ccc;
+    }
+
+
+    #right {
+      box-sizing: border-box;
+      position: fixed;
+      top: 56px;
+      left: 18%;
+      width: 82%;
+      height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    #right::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    #right::-webkit-scrollbar-track {
+      background: white;
+    }
+
+    #right::-webkit-scrollbar-thumb {
+      background: #999;
+      border-radius: 10px 10px;
+    }
+
+    #right::-webkit-scrollbar-thumb:hover {
+      background: #ccc;
+      border-radius: 10px 10px;
+    }
+
+    #ad {
+      position: relative;
+      box-sizing: border-box;
+      width: 100%;
+      height: 260px;
+      text-align: center;
+      padding: 0 0 0 5vw;
+      background-color: rgb(255, 255, 255);
+    }
+
+    #ad_content {
+      height: 260px;
+      margin: auto;
+      background-color: #fff;
+    }
+
+    #content {
+      box-sizing: border-box;
+      width: 100%;
+      margin: auto;
+      padding: 2%;
+    }
+
+    .ad_text {
+      box-sizing: border-box;
+      position: absolute;
+      top: 40px;
+      text-align: left;
+    }
+
+    .ad_text p {
+      box-sizing: border-box;
+      width: 500px;
+      font-size: 28px;
+      font-weight: normal;
+      margin-top: 5px;
+
+    }
+
+    .subscribe {
+      margin-top: 50px;
+      width: 95px;
+      height: 40px;
+      text-align: center;
+      line-height: 44px;
+      font-size: 16px;
+      border: 2px solid #2a5cc9;
+      border-radius: 5%;
+      color: #3367d6;
+      cursor: pointer;
+    }
+
+    #ad_close {
+      box-sizing: border-box;
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 25px;
+      height: 25px;
+      background-color: rgba(255, 255, 255, 0.7);
+      cursor: pointer;
+    }
+
+    #ad_close i {
+
+      box-sizing: border-box;
+      font-size: 20px;
+      text-align: center;
+      line-height: 25px;
+    }
+
+    .section {
+      box-sizing: border-box;
+      width: 100%;
+      height: 100%;
+      margin-bottom: 2%;
+      overflow: auto;
+    }
+
+    .box {
+      box-sizing: border-box;
+      float: left;
+      cursor: pointer;
+      width: 23%;
+      margin: 0 1% 1% 1%;
+    }
+
+    .box:nth-of-type(4n+4) {
+      margin-right: 0;
+    }
+
+    .box_img {
+      width: 100%;
+    }
+
+    .box_img img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .box_info {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 8px 0;
+      height: 120px;
+    }
+
+    .creator_logo {
+      float: left;
+      width: 15%;
+      padding-right: 3%;
+    }
+
+    .creator_logo img {
+      border-radius: 50%;
+      width: 100%;
+    }
+
+    .creator_text {
+      float: left;
+      width: 82%;
+    }
+
+    .video_title {
+      font-size: 14px;
+      max-height: 40px;
+      font-weight: bold;
+      color: #030303;
+      overflow: hidden;
+      margin-bottom: 6px;
+    }
+
+    .video_author {
+      font-size: 14px;
+      color: #606060;
+
+    }
+
+    .video_view {
+      font-size: 14px;
+      color: #606060;
+    }
+
+    .video_live {
+      font-size: 12px;
+      width: 36px;
+      padding: 2px 4px;
+      border: 1px solid #c00;
+      color: #c00;
+      border-radius: 3px;
+      margin-top: 5px;
+    }
+
+    .video_author i {
+      padding-left: 8px;
+      font-size: 6px;
+    }
+
+    hr {
+      height: 4px;
+      background: rgb(220, 220, 220);
+      border: none;
+    }
+
+    .section_title {
+      box-sizing: border-box;
+      cursor: pointer;
+      font-size: 20px;
+      font-weight: 500;
+      width: 90%;
+      margin-left: 1%;
+      margin-bottom: 1%;
+    }
+
+
+    .right_login {
+      display: inline-block;
+      width: 70px;
+      height: 28px;
+      border: 1px solid #2a5cc9;
+      color: #2a5cc9;
+      border-radius: 2px;
+      padding: 5px;
+      text-align: left;
+      vertical-align: middle;
+      line-height: 28px;
+      cursor: pointer;
+    }
+
+    .right_login i {
+      font-size: 24px;
+      margin-left: 5px;
+      margin-right: 4px;
+    }
+
+    .right_login span {
+      font-size: 14px;
+      margin-left: 4px;
+      margin-right: 5px;
+    }
+
+    .header_center i {
+      font-size: 18px;
+    }
+
+    .search-bar {
+      width: 80%;
+      border: none;
+      font-size: 16px;
+      line-height: 27px;
+      text-indent: 12px;
+    }
+
+    .search-btn {
+      position: absolute;
+      right: 0;
+      top: 0;
+      display: inline-block;
+      width: 70px;
+      height: 33px;
+      background: rgb(248, 248, 248);
+      border-left: 1px solid rgb(211, 211, 211);
+      border-right: 1px solid rgb(248, 248, 248);
+      border-top: 1px solid rgb(248, 248, 248);
+      border-bottom: 1px solid rgb(248, 248, 248);
+      cursor: pointer;
+    }
+
+    .searchbox {
+      display: inline-block;
+      width: 65%;
+      height: 33px;
+      background: #fff;
+      border: 1px solid rgb(211, 211, 211);
+      position: relative;
+      top: -2.5px;
+      box-shadow: inset 0px 0px 3px 2px rgb(248, 248, 248);
+    }
+
+    .guideline {
+      width: 100%;
+      box-sizing: border-box;
+      height: 45px;
+      vertical-align: middle;
+      font-size: 14px;
+      color: #606060;
+      line-height: 45px;
+      padding-left: 16px;
+      font-weight: 650;
+    }
+
+    .guideline:hover {
+      cursor: pointer;
+      background-color: rgb(242, 242, 242);
+    }
+
+    .b {
+      background-color: rgb(242, 242, 242);
+    }
+
+    #left .guideline .lefticon {
+      display: inline-block;
+      width: 62px;
+    }
+
+
+    #left .guideline .lefticon i {
+      font-size: 20px;
+      margin: 0 28px 0 8px;
+      vertical-align: middle;
+      color: #606060;
+    }
+
+    #left .guideline .lefticon .a {
+      color: red;
+    }
+
+    .left_hr {
+      height: 1px;
+      width: 95%;
+      box-sizing: border-box;
+      margin: 5px 25px 0 0;
+
+    }
+
+    .guideline2 {
+      width: 100%;
+      box-sizing: border-box;
+      height: 120px;
+      vertical-align: middle;
+      font-size: 14px;
+      color: #606060;
+      padding: 5px 25px 0px 25px;
+    }
+
+    .left_login {
+      width: 90px;
+      height: 36px;
+      border: 1px solid #2a5cc9;
+      color: #2a5cc9;
+      border-radius: 2px;
+      text-align: left;
+      line-height: 36px;
+      cursor: pointer;
+    }
+
+    .left_login i {
+      font-size: 24px;
+      margin: 0 8px 0 10px;
+      line-height: 36px;
+    }
+
+
+    .guidetitle {
+      width: 100%;
+      box-sizing: border-box;
+      height: 45px;
+      vertical-align: middle;
+      font-size: 14px;
+      color: #606060;
+      line-height: 45px;
+      padding: 0 25px 0 25px;
+      font-weight: bolder;
+    }
+
+    #footer {
+      margin-bottom: 5vh;
+    }
+
+    .footertext {
+      box-sizing: border-box;
+      width: 100%;
+      height: 45px;
+      padding: 0 25px 0 25px;
+    }
+
+    .footertext span {
+      font-size: 14px;
+      margin-right: 4px;
+      color: #606060;
+      cursor: pointer;
+    }
+
+    @media (max-width :1120px) {
+      #right {
+        width: calc(100% - 72px);
+        left: 72px;
+      }
+
+      #left {
+        box-sizing: border-box;
+        width: 72px;
+        height: 100%;
+        overflow-y: hidden;
+      }
+
+
+      #left div:not(.smshow),
+      #left hr {
+        display: none;
+      }
+
+      #left .guideline {
+        box-sizing: border-box;
+        width: 100%;
+        height: auto;
+        padding: 12px 0 12px 0;
+      }
+
+      #left .b {
+        background: white;
+      }
+
+      #left .guideline:hover {
+        cursor: pointer;
+        background-color: rgb(242, 242, 242);
+      }
+
+
+      #left .smbox {
+        width: 100%;
+        margin: auto;
+        text-align: center;
+      }
+
+      #left .guideline .lefticon i {
+        display: block;
+        margin: auto;
+      }
+
+      #left .guideline .lefticon {
+        display: block;
+        margin: auto;
+      }
+
+      #left .guidetext {
+        font-size: 14px;
+        margin: auto;
+
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header">
+    <div class="header_left">
+      <i class="fas fa-bars headericon"></i>
+      <div class="left_img"><img src="./images/ytlogo.png" alt="youtube_logo" height="20px"><sup style="font-size:8px;">
+          TW</sup></div>
+    </div>
+    <div class="header_center">
+      <div class="searchbox"><input class="search-bar" type="text" placeholder="搜尋"><button class="search-btn"><i
+            class="fas fa-search"></i></button></div>
+
+      <i class="fas fa-microphone headericon"></i>
+    </div>
+    <div class="header_right">
+      <i class="fas fa-th headericon"></i>
+      <i class="fas fa-ellipsis-v headericon"></i>
+      <div class="right_login"><i class="fas fa-user-circle"></i><span>登入</span></div>
+    </div>
+  </div>
+  <div id="left">
+    <div class="guideline b smshow">
+      <div class="smbox smshow">
+        <div class="lefticon"><i class="fas fa-home a"></i></div>
+        <span class="guidetext">首頁</span>
+      </div>
+    </div>
+    <div class="guideline smshow">
+      <div class="smbox smshow">
+        <div class="lefticon"><i class="fas fa-record-vinyl"></i></div>
+        <span class="guidetext">探索</span>
+      </div>
+    </div>
+    <div class="guideline smshow">
+      <div class="smbox smshow">
+        <div class="lefticon"><i class="fas fa-photo-video"></i></div>
+        <span class="guidetext">訂閱內容</span>
+      </div>
+    </div>
+    <hr class="left_hr">
+    <div class="guideline smshow">
+      <div class="smbox smshow">
+        <div class="lefticon"><i class="fas fa-film"></i></div>
+        <span class="guidetext">媒體庫</span>
+      </div>
+    </div>
+    <div class="guideline smshow">
+      <div class="smbox smshow">
+        <div class="lefticon"><i class="fas fa-history"></i></div>
+        <span class="guidetext">觀看紀錄</span>
+      </div>
+    </div>
+    <hr class="left_hr">
+    <div class="guideline2">
+      <p>登入帳戶即可對影片表示喜歡、發布留言及訂閱頻道。</p>
+      <div class="left_login"><i class="fas fa-user-circle"></i><span>登入</span></div>
+    </div>
+    <hr class="left_hr">
+    <div class="guidetitle">YOUTUBE 精選</div>
+    <div class="guideline">
+      <div class="lefticon"><i class="fas fa-play-circle"></i></div>
+      <span class="guidetext">音樂</span>
+    </div>
+    <div class="guideline">
+      <div class="lefticon"><i class="fas fa-trophy"></i></div>
+      <span class="guidetext">體育</span>
+    </div>
+    <div class="guideline">
+      <div class="lefticon"><i class="fas fa-gamepad"></i></div>
+      <span class="guidetext">遊戲</span>
+    </div>
+    <div class="guideline">
+      <div class="lefticon"><i class="far fa-newspaper"></i></div>
+      <span class="guidetext">新聞</span>
+    </div>
+    <div class="guideline">
+      <div class="lefticon"><i class="fab fa-angellist"></i></div>
+      <span class="guidetext">直播</span>
+    </div>
+    <div class="guideline">
+      <div class="lefticon"><i class="fas fa-street-view"></i></div>
+      <span class="guidetext">360度影片</span>
+    </div>
+    <hr class="left_hr">
+    <div class="guideline">
+      <div class="lefticon"><i class="fas fa-plus-circle"></i></div>
+      <span class="guidetext">新增頻道</span>
+    </div>
+    <hr class="left_hr">
+    <div class="guidetitle">更多 YOUTUBE 功能
+    </div>
+    <div class="guideline">
+      <div class="lefticon"><i class="fab fa-youtube"></i></div>
+      <span class="guidetext">YouTube Premium</span>
+    </div>
+    <div class="guideline">
+      <div class="lefticon"><i class="fas fa-cog"></i></div>
+      <span class="guidetext">設定</span>
+    </div>
+    <hr class="left_hr">
+    <div class="guideline">
+      <div class="lefticon"><i class="fas fa-flag"></i></div>
+      <span class="guidetext">檢舉紀錄</span>
+    </div>
+    <div class="guideline">
+      <div class="lefticon"><i class="fas fa-question-circle"></i></div>
+      <span class="guidetext">說明</span>
+    </div>
+    <div class="guideline">
+      <div class="lefticon"><i class="fas fa-exclamation-circle"></i></div>
+      <span class="guidetext">提供意見</span>
+    </div>
+    <hr class="left_hr">
+    <div id="footer">
+      <p class="footertext">
+        <span
+          class>簡介</span><span>媒體</span><span>版權</span><span>與我們聯絡</span><span>創作者</span><span>廣告</span><span>開發人員</span>
+      </p>
+      <p class="footertext"><span>條款</span><span>隱私權</span><span>政策與安全性</span><span>YouTube
+          運作方式</span><span>測試新功能</span></p>
+      <p class="footertext"><span>© 2021 Google LLC</span></p>
+    </div>
+  </div>
+
+  </div>
+  <div id="right">
+    <div id="ad">
+      <div id="ad_close">
+        <i class="fas fa-times"></i>
+      </div>
+      <div id="ad_content">
+        <img src="./images/ad.jpeg" alt="youtube_premium" height="260px">
+        <div class="ad_text">
+          <img src="./images/ad_logo.png" alt="youtube_premium_logo" height="25px">
+          <p>讓自己沈浸在零廣告的 YouTube 影音世界中</p>
+          <div class="subscribe">立即訂閱</div>
+        </div>
+      </div>
+    </div>
+    <div id="content">
+      <div class="section">
+        <p class="section_title"></p>
+        <div class="box">
+          <div class="box_img">
+            <img src="./images/ditto.jpg" alt="">
+          </div>
+          <div class="box_info">
+            <div class="creator_logo"><img src="https://picsum.photos/150/150/?random=1"></div>
+            <div class="creator_text">
+              <div class="video_title">【不朽傳奇】頂尖模仿高手｜百變怪絕世的誕生！？重逢的百年友誼之戰</div>
+              <div class="video_info">
+                <div class="video_author">Ditto Master<i class="fas fa-music"></i></div>
+                <div class="video_view">觀看次數：150萬次‧3 個月前</div>
+                <div class="video_live">直播中</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="box_img">
+            <img src="./images/ditto.jpg" alt="">
+          </div>
+          <div class="box_info">
+            <div class="creator_logo"><img src="https://picsum.photos/150/150/?random=1"></div>
+            <div class="creator_text">
+              <div class="video_title">【不朽傳奇】頂尖模仿高手｜百變怪絕世的誕生！？重逢的百年友誼之戰</div>
+              <div class="video_info">
+                <div class="video_author">Ditto Master<i class="fas fa-check-circle"></i></div>
+                <div class="video_view">觀看次數：150萬次‧3 個月前</div>
+                <div class="video_live">直播中</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="box_img">
+            <img src="./images/ditto.jpg" alt="">
+          </div>
+          <div class="box_info">
+            <div class="creator_logo"><img src="https://picsum.photos/150/150/?random=1"></div>
+            <div class="creator_text">
+              <div class="video_title">【不朽傳奇】頂尖模仿高手｜百變怪絕世的誕生！？重逢的百年友誼之戰</div>
+              <div class="video_info">
+                <div class="video_author">Ditto Master<i class="fas fa-check-circle"></i></div>
+                <div class="video_view">觀看次數：150萬次‧3 個月前</div>
+                <div class="video_live">直播中</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="box_img">
+            <img src="./images/ditto.jpg" alt="">
+          </div>
+          <div class="box_info">
+            <div class="creator_logo"><img src="https://picsum.photos/150/150/?random=1"></div>
+            <div class="creator_text">
+              <div class="video_title">【不朽傳奇】頂尖模仿高手｜百變怪絕世的誕生！？重逢的百年友誼之戰</div>
+              <div class="video_info">
+                <div class="video_author">Ditto Master<i class="fas fa-check-circle"></i></div>
+                <div class="video_view">觀看次數：150萬次‧3 個月前</div>
+                <div class="video_live">直播中</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="box_img">
+            <img src="./images/ditto.jpg" alt="">
+          </div>
+          <div class="box_info">
+            <div class="creator_logo"><img src="https://picsum.photos/150/150/?random=1"></div>
+            <div class="creator_text">
+              <div class="video_title">【不朽傳奇】頂尖模仿高手｜百變怪絕世的誕生！？重逢的百年友誼之戰</div>
+              <div class="video_info">
+                <div class="video_author">Ditto Master<i class="fas fa-check-circle"></i></div>
+                <div class="video_view">觀看次數：150萬次‧3 個月前</div>
+                <div class="video_live">直播中</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="box_img">
+            <img src="./images/ditto.jpg" alt="">
+          </div>
+          <div class="box_info">
+            <div class="creator_logo"><img src="https://picsum.photos/150/150/?random=1"></div>
+            <div class="creator_text">
+              <div class="video_title">【不朽傳奇】頂尖模仿高手｜百變怪絕世的誕生！？重逢的百年友誼之戰</div>
+              <div class="video_info">
+                <div class="video_author">Ditto Master<i class="fas fa-check-circle"></i></div>
+                <div class="video_view">觀看次數：150萬次‧3 個月前</div>
+                <div class="video_live">直播中</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="box_img">
+            <img src="./images/ditto.jpg" alt="">
+          </div>
+          <div class="box_info">
+            <div class="creator_logo"><img src="https://picsum.photos/150/150/?random=1"></div>
+            <div class="creator_text">
+              <div class="video_title">【不朽傳奇】頂尖模仿高手｜百變怪絕世的誕生！？重逢的百年友誼之戰</div>
+              <div class="video_info">
+                <div class="video_author">Ditto Master<i class="fas fa-check-circle"></i></div>
+                <div class="video_view">觀看次數：150萬次‧3 個月前</div>
+                <div class="video_live">直播中</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="box_img">
+            <img src="./images/ditto.jpg" alt="">
+          </div>
+          <div class="box_info">
+            <div class="creator_logo"><img src="https://picsum.photos/150/150/?random=1"></div>
+            <div class="creator_text">
+              <div class="video_title">【不朽傳奇】頂尖模仿高手｜百變怪絕世的誕生！？重逢的百年友誼之戰</div>
+              <div class="video_info">
+                <div class="video_author">Ditto Master<i class="fas fa-check-circle"></i></div>
+                <div class="video_view">觀看次數：150萬次‧3 個月前</div>
+                <div class="video_live">直播中</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="section">
+        <p class="section_title">發燒影片</p>
+        <div class="box">
+          <div class="box_img">
+            <img src="./images/ditto.jpg" alt="">
+          </div>
+          <div class="box_info">
+            <div class="creator_logo"><img src="https://picsum.photos/150/150/?random=1"></div>
+            <div class="creator_text">
+              <div class="video_title">【不朽傳奇】頂尖模仿高手｜百變怪絕世的誕生！？重逢的百年友誼之戰</div>
+              <div class="video_info">
+                <div class="video_author">Ditto Master<i class="fas fa-music"></i></div>
+                <div class="video_view">觀看次數：150萬次‧3 個月前</div>
+                <div class="video_live">直播中</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="box_img">
+            <img src="./images/ditto.jpg" alt="">
+          </div>
+          <div class="box_info">
+            <div class="creator_logo"><img src="https://picsum.photos/150/150/?random=1"></div>
+            <div class="creator_text">
+              <div class="video_title">【不朽傳奇】頂尖模仿高手｜百變怪絕世的誕生！？重逢的百年友誼之戰</div>
+              <div class="video_info">
+                <div class="video_author">Ditto Master<i class="fas fa-music"></i></div>
+                <div class="video_view">觀看次數：150萬次‧3 個月前</div>
+                <div class="video_live">直播中</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="box_img">
+            <img src="./images/ditto.jpg" alt="">
+          </div>
+          <div class="box_info">
+            <div class="creator_logo"><img src="https://picsum.photos/150/150/?random=1"></div>
+            <div class="creator_text">
+              <div class="video_title">【不朽傳奇】頂尖模仿高手｜百變怪絕世的誕生！？重逢的百年友誼之戰</div>
+              <div class="video_info">
+                <div class="video_author">Ditto Master<i class="fas fa-music"></i></div>
+                <div class="video_view">觀看次數：150萬次‧3 個月前</div>
+                <div class="video_live">直播中</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="box_img">
+            <img src="./images/ditto.jpg" alt="">
+          </div>
+          <div class="box_info">
+            <div class="creator_logo"><img src="https://picsum.photos/150/150/?random=1"></div>
+            <div class="creator_text">
+              <div class="video_title">【不朽傳奇】頂尖模仿高手｜百變怪絕世的誕生！？重逢的百年友誼之戰</div>
+              <div class="video_info">
+                <div class="video_author">Ditto Master<i class="fas fa-music"></i></div>
+                <div class="video_view">觀看次數：150萬次‧3 個月前</div>
+                <div class="video_live">直播中</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="section">
+        <p class="section_title">COVID-19 新聞</p>
+        <div class="box">
+          <div class="box_img">
+            <img src="./images/ditto.jpg" alt="">
+          </div>
+          <div class="box_info">
+            <div class="creator_logo"><img src="https://picsum.photos/150/150/?random=1"></div>
+            <div class="creator_text">
+              <div class="video_title">【不朽傳奇】頂尖模仿高手｜百變怪絕世的誕生！？重逢的百年友誼之戰</div>
+              <div class="video_info">
+                <div class="video_author">Ditto Master<i class="fas fa-music"></i></div>
+                <div class="video_view">觀看次數：150萬次‧3 個月前</div>
+                <div class="video_live">直播中</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="box_img">
+            <img src="./images/ditto.jpg" alt="">
+          </div>
+          <div class="box_info">
+            <div class="creator_logo"><img src="https://picsum.photos/150/150/?random=1"></div>
+            <div class="creator_text">
+              <div class="video_title">【不朽傳奇】頂尖模仿高手｜百變怪絕世的誕生！？重逢的百年友誼之戰</div>
+              <div class="video_info">
+                <div class="video_author">Ditto Master<i class="fas fa-music"></i></div>
+                <div class="video_view">觀看次數：150萬次‧3 個月前</div>
+                <div class="video_live">直播中</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="box_img">
+            <img src="./images/ditto.jpg" alt="">
+          </div>
+          <div class="box_info">
+            <div class="creator_logo"><img src="https://picsum.photos/150/150/?random=1"></div>
+            <div class="creator_text">
+              <div class="video_title">【不朽傳奇】頂尖模仿高手｜百變怪絕世的誕生！？重逢的百年友誼之戰</div>
+              <div class="video_info">
+                <div class="video_author">Ditto Master<i class="fas fa-music"></i></div>
+                <div class="video_view">觀看次數：150萬次‧3 個月前</div>
+                <div class="video_live">直播中</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="box_img">
+            <img src="./images/ditto.jpg" alt="">
+          </div>
+          <div class="box_info">
+            <div class="creator_logo"><img src="https://picsum.photos/150/150/?random=1"></div>
+            <div class="creator_text">
+              <div class="video_title">【不朽傳奇】頂尖模仿高手｜百變怪絕世的誕生！？重逢的百年友誼之戰</div>
+              <div class="video_info">
+                <div class="video_author">Ditto Master<i class="fas fa-music"></i></div>
+                <div class="video_view">觀看次數：150萬次‧3 個月前</div>
+                <div class="video_live">直播中</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
